@@ -151,7 +151,7 @@ module CouchRest
           v = v.to_json if %w{key startkey endkey}.include?(k.to_s)
           "#{k}=#{CGI.escape(v.to_s)}"
         end.join("&")
-        url = "#{url}?#{query}"
+        url = "#{url}#{url.include?("?") ? "&" : "?"}#{query}"
       end
       url
     end
